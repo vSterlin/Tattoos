@@ -124,6 +124,7 @@ const BackgroundOverlay = styled.div`
   display: none;
   @media only screen and (min-width: 768px) {
     display: block;
+    opacity: 0;
     animation: ${(props) => props.open}Overlay 0.3s linear forwards;
   }
 
@@ -160,16 +161,18 @@ const sliderArray = [
   },
 ];
 
+
 const Slider = () => {
   const [slider, setSlider] = useState("");
   return (
     <>
+    {console.log(window.innerWidth)}
       <SliderContainer open={slider}>
         <ArrowWrapper />
         <SliderItemWrapper>
           {sliderArray.map((item) => {
             return (
-              <SliderItem>
+              <SliderItem key={item.name}>
                 {item.icon}
                 <h2>{item.name}</h2>
               </SliderItem>
