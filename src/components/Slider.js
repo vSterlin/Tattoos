@@ -166,7 +166,6 @@ const Slider = () => {
   const [slider, setSlider] = useState("");
   return (
     <>
-    {console.log(window.innerWidth)}
       <SliderContainer open={slider}>
         <ArrowWrapper />
         <SliderItemWrapper>
