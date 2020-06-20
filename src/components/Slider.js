@@ -161,6 +161,12 @@ const sliderArray = [
   },
 ];
 
+const timeOut = (func) => {
+  func("close");
+  setTimeout(() => {
+    func("");
+  }, 300);
+}
 
 const Slider = () => {
   const [slider, setSlider] = useState("");
@@ -181,7 +187,7 @@ const Slider = () => {
 
         <ArrowWrapper
           onClick={() => {
-            slider === "open" ? setSlider("close") : setSlider("open");
+            slider === "open" ? timeOut(setSlider) : setSlider("open");
           }}
         >
           <Arrow open={slider} />
