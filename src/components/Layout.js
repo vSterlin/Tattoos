@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {createGlobalStyle} from "styled-components";
-
+import Slider from "./Slider";
 
 const Global = createGlobalStyle`
   * {
@@ -15,6 +15,7 @@ const Layout = ({children}) => {
   return (
     <div>
       <Global />
+      <Slider />
       {children}
     </div>
   )
