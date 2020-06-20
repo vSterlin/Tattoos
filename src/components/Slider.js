@@ -17,15 +17,12 @@ const SliderContainer = styled.div`
     bottom: 0;
     width: 100vw;
     height: 70px;
-    
   }
 
   @media only screen and (min-width: 768px) {
     transform: translateX(-80%);
 
     animation: ${(props) => props.open}Slider 0.3s linear forwards;
-
-    
   }
   @keyframes openSlider {
     from {
@@ -117,6 +114,37 @@ const Arrow = styled(RightArrowAlt)`
   }
   animation: ${(props) => props.open}Arrow 0.3s linear forwards;
 `;
+
+const BackgroundOverlay = styled.div`
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  display: none;
+  @media only screen and (min-width: 768px) {
+    display: block;
+    animation: ${(props) => props.open}Overlay 0.3s linear forwards;
+  }
+
+  @keyframes openOverlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes closeOverlay {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+`;
+
 const sliderArray = [
   {
     name: "Home",
@@ -133,31 +161,32 @@ const sliderArray = [
 ];
 
 const Slider = () => {
-
   const [slider, setSlider] = useState("");
   return (
+    <>
+      <SliderContainer open={slider}>
+        <ArrowWrapper />
+        <SliderItemWrapper>
+          {sliderArray.map((item) => {
+            return (
+              <SliderItem>
+                {item.icon}
+                <h2>{item.name}</h2>
+              </SliderItem>
+            );
+          })}
+        </SliderItemWrapper>
 
-          <SliderContainer open={slider} >
-            <ArrowWrapper />
-            <SliderItemWrapper>
-              {sliderArray.map((item) => {
-                return (
-                  <SliderItem>
-                    {item.icon}
-                    <h2>{item.name}</h2>
-                  </SliderItem>
-                );
-              })}
-            </SliderItemWrapper>
-
-            <ArrowWrapper
-              onClick={() => {
-                slider === "open" ? setSlider("close") : setSlider("open");
-              }}
-            >
-              <Arrow open={slider} />
-            </ArrowWrapper>
-          </SliderContainer>
+        <ArrowWrapper
+          onClick={() => {
+            slider === "open" ? setSlider("close") : setSlider("open");
+          }}
+        >
+          <Arrow open={slider} />
+        </ArrowWrapper>
+      </SliderContainer>
+      <BackgroundOverlay open={slider} />
+    </>
   );
 };
 
