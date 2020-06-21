@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import { WolfPackBattalion } from "@styled-icons/fa-brands";
 import { Gallery, Contacts } from "@styled-icons/remix-line";
@@ -21,8 +22,15 @@ const SliderContainer = styled.div`
 
   @media only screen and (min-width: 768px) {
     transform: translateX(-80%);
-
-    animation: ${(props) => props.open}Slider 0.3s linear forwards;
+    ${(props) => {
+      if (props.open === "opened") return "transform: translateX(0);";
+      if (props.open === "closed") return "transform: translateX(-80%);";
+      if (props.open === "open")
+        return "animation: openSlider 0.3s linear forwards;";
+      if (props.open === "close")
+        return "animation: closeSlider 0.3s linear forwards;";
+    }}
+    /* animation: ${(props) => props.open}Slider 0.3s linear forwards; */
   }
   @keyframes openSlider {
     from {
@@ -95,6 +103,8 @@ const Arrow = styled(RightArrowAlt)`
     color: rgba(255, 255, 255, 0.7);
   }
 
+
+
   @keyframes openArrow {
     from {
       transform: rotate(0);
@@ -112,7 +122,17 @@ const Arrow = styled(RightArrowAlt)`
       transform: rotate(0);
     }
   }
-  animation: ${(props) => props.open}Arrow 0.3s linear forwards;
+  /* animation: ${(props) => props.open}Arrow 0.3s linear forwards; */
+
+  ${(props) => {
+    if (props.open === "opened") return "transform: rotate(-180deg);";
+    if (props.open === "closed") return "transform: rotate(0);";
+    if (props.open === "open")
+      return "animation: openArrow 0.3s linear forwards;";
+    if (props.open === "close")
+      return "animation: closeArrow 0.3s linear forwards;";
+  }}
+
 `;
 
 const BackgroundOverlay = styled.div`
@@ -125,7 +145,15 @@ const BackgroundOverlay = styled.div`
   @media only screen and (min-width: 768px) {
     display: block;
     opacity: 0;
-    animation: ${(props) => props.open}Overlay 0.3s linear forwards;
+    /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
+    ${(props) => {
+      if (props.open === "opened") return "opacity: 1;";
+      if (props.open === "closed") return "opacity: 0;";
+      if (props.open === "open")
+        return "animation: openOverlay 0.3s linear forwards";
+      if (props.open === "close")
+        return "animation: closeOverlay 0.3s linear forwards;";
+    }}
   }
 
   @keyframes openOverlay {
@@ -166,10 +194,27 @@ const timeOut = (func) => {
   setTimeout(() => {
     func("");
   }, 300);
-}
+};
 
-const Slider = () => {
-  const [slider, setSlider] = useState("");
+const open = (func) => {
+  func("open");
+  setTimeout(() => {
+    func("opened");
+  }, 300);
+};
+
+const close = (func) => {
+  func("close");
+  setTimeout(() => {
+    func("closed");
+  }, 300);
+};
+const Slider = ({ context }) => {
+  const { slider, setSlider } = context;
+
+  useEffect(() => {
+    console.log(slider);
+  }, [slider]);
   return (
     <>
       <SliderContainer open={slider}>
@@ -177,17 +222,20 @@ const Slider = () => {
         <SliderItemWrapper>
           {sliderArray.map((item) => {
             return (
-              <SliderItem key={item.name}>
-                {item.icon}
-                <h2>{item.name}</h2>
-              </SliderItem>
+              <Link to="/page2">
+                x{" "}
+                <SliderItem key={item.name}>
+                  {item.icon}
+                  <h2>{item.name}</h2>
+                </SliderItem>
+              </Link>
             );
           })}
         </SliderItemWrapper>
 
         <ArrowWrapper
           onClick={() => {
-            slider === "open" ? timeOut(setSlider) : setSlider("open");
+            slider === "opened" ? close(setSlider) : open(setSlider);
           }}
         >
           <Arrow open={slider} />

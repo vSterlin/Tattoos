@@ -1,6 +1,7 @@
-import React from 'react'
-import styled, {createGlobalStyle} from "styled-components";
+import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import Slider from "./Slider";
+import SliderContext from "../context/SliderContext";
 
 const Global = createGlobalStyle`
   * {
@@ -10,15 +11,18 @@ const Global = createGlobalStyle`
   }
 `;
 
-
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div>
       <Global />
-      <Slider />
+      <SliderContext.Consumer>
+        {(context) => (
+          <Slider context={context}/>
+        )}
+      </SliderContext.Consumer>
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
