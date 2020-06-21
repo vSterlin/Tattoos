@@ -142,10 +142,10 @@ const BackgroundOverlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 9;
-
+  opacity: 0;
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
-      else if (props.open === "closed") return "opacity: 0;";
+      else if (props.open === "closed") return "display: none;";
       else if (props.open === "open")
         return "animation: openOverlay 0.3s linear forwards;";
       else if (props.open === "close")
