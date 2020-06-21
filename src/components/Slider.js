@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { WolfPackBattalion } from "@styled-icons/fa-brands";
@@ -142,19 +142,15 @@ const SliderBackgroundOverlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 9;
-  display: none;
-  @media only screen and (min-width: 768px) {
-    display: block;
-    /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
-    ${(props) => {
-      // if (props.open === "opened") return "opacity: 1;";
+  ${(props) => {
+      if (props.open === "opened") return "opacity: 1;";
       if (props.open === "closed") return "display: none;";
-      // if (props.open === "open")
-      //   return "animation: openOverlay 0.3s linear forwards;";
-      // if (props.open === "close")
-      //   return "animation: closeOverlay 0.3s linear forwards;";
+      if (props.open === "open")
+        return "animation: openOverlay 0.3s linear forwards;";
+      if (props.open === "close")
+        return "animation: closeOverlay 0.3s linear forwards;";
     }}
-  }
+  
 
   @keyframes openOverlay {
     from {
@@ -193,12 +189,6 @@ const sliderArray = [
   },
 ];
 
-const timeOut = (func) => {
-  func("close");
-  setTimeout(() => {
-    func("");
-  }, 300);
-};
 
 const open = (func) => {
   func("open");
