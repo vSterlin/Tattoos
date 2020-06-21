@@ -174,6 +174,10 @@ const BackgroundOverlay = styled.div`
   }
 `;
 
+const UnstyledLink = styled(Link)`
+  text-decoration: none;
+`
+
 const sliderArray = [
   {
     name: "Home",
@@ -222,13 +226,12 @@ const Slider = ({ context }) => {
         <SliderItemWrapper>
           {sliderArray.map((item) => {
             return (
-              <Link to="/page2">
-                x{" "}
+              <UnstyledLink to={item.name === "Home" ? "/" : `/${(item.name).toLowerCase()}`} onClick={() => close(setSlider)}>
                 <SliderItem key={item.name}>
                   {item.icon}
                   <h2>{item.name}</h2>
                 </SliderItem>
-              </Link>
+              </UnstyledLink>
             );
           })}
         </SliderItemWrapper>

@@ -40,7 +40,7 @@ const Heading = styled.h1`
 
 
 
-const Page2 = () => {
+const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
       desktop: file(relativePath: { eq: "background.jpg" }) {
@@ -58,7 +58,7 @@ const Page2 = () => {
     <Layout>
       <Background fluid={image}>
         <BackgroundOverlay>
-          <Heading>Tattoos</Heading>
+          <Heading>Gallery</Heading>
 
 
 
@@ -68,4 +68,4 @@ const Page2 = () => {
   );
 };
 
-export default Page2;
+export default IndexPage;
