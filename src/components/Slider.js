@@ -25,7 +25,7 @@ const SliderContainer = styled.div`
     transform: translateX(-80%);
     ${(props) => {
       if (props.open === "opened") return "transform: translateX(0);";
-      if (props.open === "closed") return "transform: translateX(-80%);";
+      if (props.open === "closed") return "transform: translateX(-80%); color: red;";
       if (props.open === "open")
         return "animation: openSlider 0.3s linear forwards;";
       if (props.open === "close")
@@ -127,7 +127,7 @@ const Arrow = styled(RightArrowAlt)`
 
   ${(props) => {
     if (props.open === "opened") return "transform: rotate(-180deg);";
-    if (props.open === "closed") return "transform: rotate(0);";
+    if (props.open === "closed") return "transform: rotate(0); color: red;";
     if (props.open === "open")
       return "animation: openArrow 0.3s linear forwards;";
     if (props.open === "close")
