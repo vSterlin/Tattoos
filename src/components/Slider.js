@@ -25,10 +25,10 @@ const SliderContainer = styled.div`
     transform: translateX(-80%);
     ${(props) => {
       if (props.open === "opened") return "transform: translateX(0);";
-      if (props.open === "closed") return "transform: translateX(-80%);";
-      if (props.open === "open")
+      else if (props.open === "closed") return "transform: translateX(-80%);";
+      else if (props.open === "open")
         return "animation: openSlider 0.3s linear forwards;";
-      if (props.open === "close")
+      else if (props.open === "close")
         return "animation: closeSlider 0.3s linear forwards;";
     }}
     /* animation: ${(props) => props.open}Slider 0.3s linear forwards; */
@@ -127,10 +127,10 @@ const Arrow = styled(RightArrowAlt)`
 
   ${(props) => {
     if (props.open === "opened") return "transform: rotate(-180deg);";
-    if (props.open === "closed") return "transform: rotate(0);";
-    if (props.open === "open")
+    else if (props.open === "closed") return "transform: rotate(0);";
+    else if (props.open === "open")
       return "animation: openArrow 0.3s linear forwards;";
-    if (props.open === "close")
+    else if (props.open === "close")
       return "animation: closeArrow 0.3s linear forwards;";
   }}
 
@@ -148,10 +148,10 @@ const BackgroundOverlay = styled.div`
     /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
-      if (props.open === "closed") return "opacity: 0;";
-      if (props.open === "open")
+      else if (props.open === "closed") return "opacity: 0;";
+      else if (props.open === "open")
         return "animation: openOverlay 0.3s linear forwards";
-      if (props.open === "close")
+      else if (props.open === "close")
         return "animation: closeOverlay 0.3s linear forwards;";
     }}
   }
