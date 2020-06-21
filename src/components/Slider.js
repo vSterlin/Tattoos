@@ -142,19 +142,18 @@ const BackgroundOverlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 9;
-  display: none;
-  opacity: 0;
-  @media only screen and (min-width: 768px) {
-    display: block;
-    /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
+
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
-      else if (props.open === "closed") return "display: none;";
+      else if (props.open === "closed") return "opacity: 0;";
       else if (props.open === "open")
-        return "animation: openOverlay 0.3s linear forwards";
+        return "animation: openOverlay 0.3s linear forwards;";
       else if (props.open === "close")
         return "animation: closeOverlay 0.3s linear forwards;";
     }}
+  
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 
   @keyframes openOverlay {
@@ -177,7 +176,7 @@ const BackgroundOverlay = styled.div`
 
 const UnstyledLink = styled(Link)`
   text-decoration: none;
-`
+`;
 
 const sliderArray = [
   {
@@ -227,7 +226,10 @@ const Slider = ({ context }) => {
         <SliderItemWrapper>
           {sliderArray.map((item) => {
             return (
-              <UnstyledLink to={item.name === "Home" ? "/" : `/${(item.name).toLowerCase()}`} onClick={() => close(setSlider)}>
+              <UnstyledLink
+                to={item.name === "Home" ? "/" : `/${item.name.toLowerCase()}`}
+                onClick={() => close(setSlider)}
+              >
                 <SliderItem key={item.name}>
                   {item.icon}
                   <h2>{item.name}</h2>
