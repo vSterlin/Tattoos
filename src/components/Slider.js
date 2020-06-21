@@ -152,6 +152,9 @@ const SliderBackgroundOverlay = styled.div`
         return "animation: closeOverlay 0.3s linear forwards;";
     }}
   
+  @media screen and (max-width: 768px){
+    display: none;
+  }
 
   @keyframes openOverlay {
     from {
