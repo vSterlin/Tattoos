@@ -12,11 +12,11 @@ const Background = styled(BackgroundImage)`
   /* flex: 4.5; */
   background-position: center;
   /* height: 100vh; */
-  flex: 1;
+  flex: 4;
   @media only screen and (max-width: 768px){
     display: none;
   }
-  z-index: 2;
+  z-index: 4;
 `;
 const BackgroundOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
@@ -36,13 +36,15 @@ const Flexbox = styled.div`
 `;
 
 const InfoDiv = styled.div`
-  flex: 1;
+  position: relative;
+  flex: 6;
   background-color: #262626;
   /* padding: 10%; */
   display: flex;
   align-items: center;
   justify-content: center;
   /* flex-direction: column; */
+  overflow: hidden;
 
   `;
 
