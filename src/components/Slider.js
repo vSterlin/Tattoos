@@ -144,13 +144,15 @@ const SliderBackgroundOverlay = styled.div`
   z-index: 9;
   display: none;
   @media only screen and (min-width: 768px) {
-    ${(props) => props.open === "closed" ? "display: none;" : "display: block;"}
+    display: block;
+    /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
     ${(props) => {
-      if (props.open === "opened") return "opacity: 1;";
-      if (props.open === "open")
-        return "animation: openOverlay 0.3s linear forwards;";
-      if (props.open === "close")
-        return "animation: closeOverlay 0.3s linear forwards;";
+      // if (props.open === "opened") return "opacity: 1;";
+      if (props.open === "closed") return "display: none;";
+      // if (props.open === "open")
+      //   return "animation: openOverlay 0.3s linear forwards;";
+      // if (props.open === "close")
+      //   return "animation: closeOverlay 0.3s linear forwards;";
     }}
   }
 
@@ -242,7 +244,7 @@ const Slider = ({ context }) => {
           <Arrow open={slider} />
         </ArrowWrapper>
       </SliderContainer>
-      <SliderBackgroundOverlay open={slider}></SliderBackgroundOverlay>
+      <SliderBackgroundOverlay open={slider} />
     </>
   );
 };
