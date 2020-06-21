@@ -136,7 +136,7 @@ const Arrow = styled(RightArrowAlt)`
 
 `;
 
-const BackgroundOverlay = styled.div`
+const SliderBackgroundOverlay = styled.div`
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
@@ -247,7 +247,7 @@ const Slider = ({ context }) => {
           <Arrow open={slider} />
         </ArrowWrapper>
       </SliderContainer>
-      <BackgroundOverlay open={slider} />
+      <SliderBackgroundOverlay open={slider} />
     </>
   );
 };
