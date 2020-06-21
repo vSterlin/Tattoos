@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import Slider from "./Slider";
+import Header from "./Header";
 import SliderContext from "../context/SliderContext";
 
 const Global = createGlobalStyle`
@@ -11,17 +11,16 @@ const Global = createGlobalStyle`
   }
 `;
 
+const MainDiv = styled.div`
+  height: 100vh;
+`;
 const Layout = ({ children }) => {
   return (
-    <div>
+    <MainDiv>
       <Global />
-      <SliderContext.Consumer>
-        {(context) => (
-          <Slider context={context}/>
-        )}
-      </SliderContext.Consumer>
+          <Header />
       {children}
-    </div>
+    </MainDiv>
   );
 };
 

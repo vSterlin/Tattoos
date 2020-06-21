@@ -4,14 +4,17 @@ import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Layout from "../components/Layout";
 
-
 const Background = styled(BackgroundImage)`
   position: relative;
 
   background-color: #313131;
   /* flex: 4.5; */
-  background-position: left;
-  height: 100vh;
+  background-position: center;
+  /* height: 100vh; */
+  flex: 1;
+  @media only screen and (max-width: 768px){
+    display: none;
+  }
 `;
 const BackgroundOverlay = styled.div`
   position: absolute;
@@ -20,23 +23,60 @@ const BackgroundOverlay = styled.div`
   height: 100%;
 `;
 
-const Heading = styled.h1`
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 150px;
-  margin: 0 auto;
-  position: absolute;
-  @media only screen and (max-width: 1200px) {
-    font-size: 120px;
+const Flexbox = styled.div`
+  display: flex;
+  height: 100%;
+  @media only screen and (max-width: 768px){
+    flex-direction: column;
   }
-  @media only screen and (max-width: 768px) {
-    font-size: 90px;
-  }
+
+
 `;
 
+const InfoDiv = styled.div`
+  flex: 1;
+  background-color: #262626;
+  /* padding: 10%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+
+`;
+
+const Rectangle = styled.div`
+
+display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 10px solid white;
+  padding: 40px;
+  `;
 
 
+
+const Heading = styled.h1`
+  font-size: 120px;
+  color: white;
+  text-align: center;
+`;
+const SubHeading = styled.h2`
+  font-size: 60px;
+  color: white;
+  text-align: center;
+  padding: 0 10px;
+  /* text-decoration: underline;
+  text-decoration-color: greenyellow; */
+
+/* border-bottom: 1px solid #707070; */
+box-shadow: 0 5px 5px -5px yellowgreen;
+transition: box-shadow 0.1s linear;
+&:hover {
+  box-shadow: 0 10px 5px -5px yellowgreen;
+
+}
+`;
 
 
 
@@ -56,14 +96,18 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Background fluid={image}>
-        <BackgroundOverlay>
-          <Heading>Sterlin's Tattoos</Heading>
+      <Flexbox>
+        <InfoDiv>
+          <Rectangle>
 
-
-
-        </BackgroundOverlay>
-      </Background>
+          <Heading>Sterlin's<br /> Tattoo<br />Shop</Heading>
+          <SubHeading>Learn More</SubHeading>
+          </Rectangle>
+        </InfoDiv>
+        <Background fluid={image}>
+          <BackgroundOverlay></BackgroundOverlay>
+        </Background>
+      </Flexbox>
     </Layout>
   );
 };

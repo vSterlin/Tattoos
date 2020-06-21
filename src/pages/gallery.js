@@ -5,7 +5,7 @@ import BackgroundImage from "gatsby-background-image";
 import Layout from "../components/Layout";
 
 
-const Background = styled(BackgroundImage)`
+const Background = styled.div`
   position: relative;
 
   background-color: #313131;
@@ -18,21 +18,6 @@ const BackgroundOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-`;
-
-const Heading = styled.h1`
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 150px;
-  margin: 0 auto;
-  position: absolute;
-  @media only screen and (max-width: 1200px) {
-    font-size: 120px;
-  }
-  @media only screen and (max-width: 768px) {
-    font-size: 90px;
-  }
 `;
 
 
@@ -58,7 +43,6 @@ const IndexPage = () => {
     <Layout>
       <Background fluid={image}>
         <BackgroundOverlay>
-          <Heading>Gallery</Heading>
 
 
 
