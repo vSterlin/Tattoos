@@ -217,8 +217,8 @@ const Slider = ({ context }) => {
   const { slider, setSlider } = context;
 
   useEffect(() => {
-    console.log(slider);
-  }, [slider]);
+    setSlider("closed");
+  }, []);
   return (
     <>
       <SliderContainer open={slider}>
