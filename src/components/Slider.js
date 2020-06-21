@@ -144,11 +144,9 @@ const SliderBackgroundOverlay = styled.div`
   z-index: 9;
   display: none;
   @media only screen and (min-width: 768px) {
-    display: block;
-    /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
+    ${(props) => props.open === "closed" ? "display: none;" : "display: block;"}
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
-      if (props.open === "closed") return "display: none;";
       if (props.open === "open")
         return "animation: openOverlay 0.3s linear forwards;";
       if (props.open === "close")
