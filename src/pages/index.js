@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Layout from "../components/Layout";
+import { Waves } from "@styled-icons/material";
 
 const Background = styled(BackgroundImage)`
   position: relative;
@@ -15,12 +16,13 @@ const Background = styled(BackgroundImage)`
   @media only screen and (max-width: 768px){
     display: none;
   }
+  z-index: 2;
 `;
 const BackgroundOverlay = styled.div`
-  position: absolute;
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
+  z-index: 3;
 `;
 
 const Flexbox = styled.div`
@@ -42,7 +44,7 @@ const InfoDiv = styled.div`
   justify-content: center;
   /* flex-direction: column; */
 
-`;
+  `;
 
 const Rectangle = styled.div`
 
@@ -52,6 +54,7 @@ display: flex;
   flex-direction: column;
   border: 10px solid white;
   padding: 40px;
+  z-index: 2;
   `;
 
 
@@ -78,6 +81,15 @@ transition: box-shadow 0.1s linear;
 }
 `;
 
+const Wave = styled(Waves)`
+  width: 1500px;
+  position: absolute;
+  transform: rotate(-45deg);
+
+  color: rgba(0,0,0, 0.8);
+  z-index: 1;
+  
+`;
 
 
 const IndexPage = () => {
@@ -98,13 +110,14 @@ const IndexPage = () => {
     <Layout>
       <Flexbox>
         <InfoDiv>
+          <Wave />
           <Rectangle>
 
           <Heading>Sterlin's<br /> Tattoo<br />Shop</Heading>
           <SubHeading>Learn More</SubHeading>
           </Rectangle>
         </InfoDiv>
-        <Background fluid={image}>
+        <Background fluid={image} preserveStackingContext	>
           <BackgroundOverlay></BackgroundOverlay>
         </Background>
       </Flexbox>
