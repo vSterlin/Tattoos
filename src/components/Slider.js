@@ -15,7 +15,7 @@ const SliderContainer = styled.div`
   display: flex;
 
   @media only screen and (max-width: 768px) {
-    position: fixed;
+    position: fixed
     bottom: 0;
     width: 100vw;
     height: 70px;
@@ -25,10 +25,10 @@ const SliderContainer = styled.div`
     transform: translateX(-80%);
     ${(props) => {
       if (props.open === "opened") return "transform: translateX(0);";
-      else if (props.open === "closed") return "transform: translateX(-80%);";
-      else if (props.open === "open")
+      if (props.open === "closed") return "transform: translateX(-80%);";
+      if (props.open === "open")
         return "animation: openSlider 0.3s linear forwards;";
-      else if (props.open === "close")
+      if (props.open === "close")
         return "animation: closeSlider 0.3s linear forwards;";
     }}
     /* animation: ${(props) => props.open}Slider 0.3s linear forwards; */
@@ -127,33 +127,33 @@ const Arrow = styled(RightArrowAlt)`
 
   ${(props) => {
     if (props.open === "opened") return "transform: rotate(-180deg);";
-    else if (props.open === "closed") return "transform: rotate(0);";
-    else if (props.open === "open")
+    if (props.open === "closed") return "transform: rotate(0);";
+    if (props.open === "open")
       return "animation: openArrow 0.3s linear forwards;";
-    else if (props.open === "close")
+    if (props.open === "close")
       return "animation: closeArrow 0.3s linear forwards;";
   }}
 
 `;
 
-const SliderBackgroundOverlay = styled.div`
+const BackgroundOverlay = styled.div`
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 100%;
   z-index: 9;
-  opacity: 0;
+  display: none;
+  @media only screen and (min-width: 768px) {
+    display: block;
+    /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
-      else if (props.open === "closed") return "display: none;";
-      else if (props.open === "open")
-        return "animation: openOverlay 0.3s linear forwards;";
-      else if (props.open === "close")
+      if (props.open === "closed") return "display: none;";
+      if (props.open === "open")
+        return "animation: openOverlay 0.3s linear forwards";
+      if (props.open === "close")
         return "animation: closeOverlay 0.3s linear forwards;";
     }}
-  
-  @media only screen and (max-width: 768px) {
-    display: none;
   }
 
   @keyframes openOverlay {
@@ -176,7 +176,7 @@ const SliderBackgroundOverlay = styled.div`
 
 const UnstyledLink = styled(Link)`
   text-decoration: none;
-`;
+`
 
 const sliderArray = [
   {
@@ -217,8 +217,8 @@ const Slider = ({ context }) => {
   const { slider, setSlider } = context;
 
   useEffect(() => {
-    setSlider("closed");
-  }, []);
+    console.log(slider);
+  }, [slider]);
   return (
     <>
       <SliderContainer open={slider}>
@@ -226,10 +226,7 @@ const Slider = ({ context }) => {
         <SliderItemWrapper>
           {sliderArray.map((item) => {
             return (
-              <UnstyledLink
-                to={item.name === "Home" ? "/" : `/${item.name.toLowerCase()}`}
-                onClick={() => close(setSlider)}
-              >
+              <UnstyledLink to={item.name === "Home" ? "/" : `/${(item.name).toLowerCase()}`} onClick={() => close(setSlider)}>
                 <SliderItem key={item.name}>
                   {item.icon}
                   <h2>{item.name}</h2>
@@ -247,7 +244,7 @@ const Slider = ({ context }) => {
           <Arrow open={slider} />
         </ArrowWrapper>
       </SliderContainer>
-      <SliderBackgroundOverlay open={slider} />
+      <BackgroundOverlay open={slider} />
     </>
   );
 };
