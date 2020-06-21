@@ -15,6 +15,7 @@ const SliderContainer = styled.div`
   display: flex;
 
   @media only screen and (max-width: 768px) {
+    position: fixed;
     bottom: 0;
     width: 100vw;
     height: 70px;
@@ -144,7 +145,6 @@ const BackgroundOverlay = styled.div`
   display: none;
   @media only screen and (min-width: 768px) {
     display: block;
-    opacity: 0;
     /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
