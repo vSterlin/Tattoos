@@ -15,7 +15,7 @@ const SliderContainer = styled.div`
   display: flex;
 
   @media only screen and (max-width: 768px) {
-    position: fixed
+    position: fixed;
     bottom: 0;
     width: 100vw;
     height: 70px;
