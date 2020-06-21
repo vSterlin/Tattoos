@@ -143,12 +143,13 @@ const BackgroundOverlay = styled.div`
   height: 100%;
   z-index: 9;
   display: none;
+  opacity: 0;
   @media only screen and (min-width: 768px) {
     display: block;
     /* animation: ${(props) => props.open}Overlay 0.3s linear forwards; */
     ${(props) => {
       if (props.open === "opened") return "opacity: 1;";
-      else if (props.open === "closed") return "opacity: 0;";
+      else if (props.open === "closed") return "display: none;";
       else if (props.open === "open")
         return "animation: openOverlay 0.3s linear forwards";
       else if (props.open === "close")
