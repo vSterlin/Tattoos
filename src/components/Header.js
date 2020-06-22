@@ -14,15 +14,20 @@ const HeaderContainer = styled.div`
   background-color: #1a1a1a;
   z-index: 10;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 `;
 
 const HeaderItemWrapper = styled.div`
+  
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 40%;
   justify-content: space-around;
+  @media only screen and (max-width: 768px) {
+    width: 70%;
+  }
+  flex:1;
 `;
 
 const HeaderItem = styled.div`
@@ -46,6 +51,20 @@ const HeaderItem = styled.div`
       width: 2em;
     }
   }
+`;
+
+const Wolf = styled(WolfPackBattalion)`
+  color: yellowgreen;
+  height: 6vh;
+
+  
+`;
+
+const IconWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center; 
+  padding-left: 10px;
 `;
 
 const UnstyledLink = styled(Link)`
@@ -91,6 +110,10 @@ const Header = () => {
   return (
     <>
       <HeaderContainer>
+        <IconWrapper>
+
+        <Wolf />
+        </IconWrapper>
         <HeaderItemWrapper>
           {sliderArray.map((item) => {
             return (
