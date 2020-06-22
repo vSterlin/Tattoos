@@ -7,7 +7,7 @@ import Img from "gatsby-image";
 const MainDiv = styled.div`
   display: flex;
   /* height: 100vh; */
-  padding: 15vh;
+  padding: 15vh 6vw 0 6vw;
   box-sizing: border-box;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -25,6 +25,8 @@ const ImageWrapper = styled.div`
   &:hover {
     box-shadow: 0 0 50px yellowgreen;
   }
+
+
 `;
 
 const DarkScreen = styled.div`
@@ -41,25 +43,17 @@ const DarkScreen = styled.div`
   align-items: center;
 `;
 
-const Canvas = styled.div`
-  height: 80vh;
-  width: 80vw;
-  background-color: black;
 
-`;
-
-const BigImageWrapper = styled.div`
-  height: 80vh;
-  width: 80vh;
-  margin: 0 auto;
-  border: 10px solid red;
-`;
 
 const BigImage = styled(Img)`
   /* min-width: 100px; */
- 
+
   height: 80vh;
   width: ${(props) => 80*(props.ratio)}vh;
+  @media only screen and (max-width: 768px){
+    width: 80vw;
+    height: ${(props) => 80/(props.ratio)}vw;
+  }
 `;
 const Carousel = () => {
   const data = useStaticQuery(graphql`
