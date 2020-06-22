@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./Header";
-import SliderContext from "../context/SliderContext";
 
 const Global = createGlobalStyle`
   * {

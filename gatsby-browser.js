@@ -5,11 +5,11 @@
  */
 
 // You can delete this file if you're not using it
-import React from "react"
+// import React from "react"
 
-import { SliderProvider } from "./src/context/SliderContext"
+// import { SliderProvider } from "./src/context/SliderContext"
 
-export const wrapRootElement = ({ element }) => (
-  <SliderProvider>{element}</SliderProvider>
-)
+// export const wrapRootElement = ({ element }) => (
+//   <SliderProvider>{element}</SliderProvider>
+// )
 

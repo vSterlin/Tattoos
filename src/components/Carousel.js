@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import {Close}from "@styled-icons/evil"
+import { Close } from "@styled-icons/evil";
+import OutsideClickHandler from "react-outside-click-handler";
+
 import Img from "gatsby-image";
 
 const MainDiv = styled.div`
@@ -26,11 +28,10 @@ const ImageWrapper = styled.div`
     box-shadow: 0 0 50px yellowgreen;
   }
 
-  @media only screen and (max-width: 768px){
+  @media only screen and (max-width: 768px) {
     width: 35vw;
-  height: 35vw;
+    height: 35vw;
   }
-
 `;
 
 const DarkScreen = styled.div`
@@ -45,43 +46,36 @@ const DarkScreen = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: ${props => props.animation ? "close" : "open"} 0.2s linear;
+  animation: ${(props) => (props.animation ? "close" : "open")} 0.2s linear;
 
-@keyframes open {
-  from {
-    opacity: 0;
-
-  }
-  to {
-    opacity: 1;
-    
-  }
-
-}
-
-@keyframes close {
-  from {
-    opacity: 1;
-
-  }
-  to {
-    opacity: 0;
-    
+  @keyframes open {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
-}
+  @keyframes close {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 `;
-
-
 
 const BigImage = styled(Img)`
   /* min-width: 100px; */
 
   height: 80vh;
-  width: ${(props) => 80*(props.ratio)}vh;
+  width: ${(props) => 80 * props.ratio}vh;
 
 /* FUN */
-  /* animation: ${(props) => props.ratio<1 ? "vertical" : "horizontal"} 0.1s linear;
+  /* animation: ${(props) =>
+    props.ratio < 1 ? "vertical" : "horizontal"} 0.1s linear;
   @keyframes vertical {
     from {
       height: 0;
@@ -95,7 +89,7 @@ const BigImage = styled(Img)`
       width: 0;
     }
     to {
-      width: ${(props) => 80*(props.ratio)}vh;
+      width: ${(props) => 80 * props.ratio}vh;
     }
   } */
 
@@ -103,7 +97,7 @@ const BigImage = styled(Img)`
 
   @media only screen and (max-width: 768px){
     width: 80vw;
-    height: ${(props) => 80/(props.ratio)}vw;
+    height: ${(props) => 80 / props.ratio}vw;
   }
 
 
@@ -117,9 +111,7 @@ const CloseButton = styled(Close)`
   top: 0;
   margin-top: 10px;
   margin-right: 10px;
-
 `;
-
 
 const Carousel = () => {
   const data = useStaticQuery(graphql`
@@ -144,36 +136,45 @@ const Carousel = () => {
   const [index, setIndex] = useState(0);
   const [renderImage, setRenderImage] = useState(false);
   const [animation, setAnimation] = useState(false);
-  const prevImage = () => {
-    index === 0 ? setIndex(imageArray.length - 1) : setIndex(index - 1);
-  };
-  const nextImage = () => {
-    index === imageArray.length - 1 ? setIndex(0) : setIndex(index + 1);
-  };
+  
+  // const prevImage = () => {
+  //   index === 0 ? setIndex(imageArray.length - 1) : setIndex(index - 1);
+  // };
+  // const nextImage = () => {
+  //   index === imageArray.length - 1 ? setIndex(0) : setIndex(index + 1);
+  // };
 
+  const close = () => {
+    setAnimation(true);
+    setTimeout(() => {
+      setRenderImage(false);
+      setAnimation(false);
+    }, 200);
+  };
   return (
     <>
       {renderImage && (
-        <DarkScreen animation={animation}>
-<CloseButton onClick={() => {
-  setAnimation(true);
-  setTimeout(() => {
-    setRenderImage(false);
-    setAnimation(false)
-  }, 200);
-  }}/>
-
-              <BigImage
-                fluid={imageArray[index].node.childImageSharp.fluid}
-                ratio={imageArray[index].node.childImageSharp.fluid.aspectRatio}
-              />
-
+        <DarkScreen
+          animation={animation}
+        >
+          <CloseButton />
+          <OutsideClickHandler
+            onOutsideClick={() => {
+              close();
+            }}
+          >
+            <BigImage
+              fluid={imageArray[index].node.childImageSharp.fluid}
+              ratio={imageArray[index].node.childImageSharp.fluid.aspectRatio}
+            />
+          </OutsideClickHandler>
         </DarkScreen>
       )}
       <MainDiv>
         {imageArray.map(({ node }, i) => {
           return (
-            <ImageWrapper key={i}
+            <ImageWrapper
+              key={i}
               onClick={() => {
                 setRenderImage(true);
                 setIndex(i);
@@ -183,9 +184,10 @@ const Carousel = () => {
             </ImageWrapper>
           );
         })}
-                {imageArray.map(({ node }, i) => {
+        {imageArray.map(({ node }, i) => {
           return (
-            <ImageWrapper key={i}
+            <ImageWrapper
+              key={i}
               onClick={() => {
                 setRenderImage(true);
                 setIndex(i);
@@ -195,9 +197,10 @@ const Carousel = () => {
             </ImageWrapper>
           );
         })}
-                {imageArray.map(({ node }, i) => {
+        {imageArray.map(({ node }, i) => {
           return (
-            <ImageWrapper key={i}
+            <ImageWrapper
+              key={i}
               onClick={() => {
                 setRenderImage(true);
                 setIndex(i);

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { WolfPackBattalion } from "@styled-icons/fa-brands";
-import { Gallery, Contacts } from "@styled-icons/remix-line";
+// import { Gallery, Contacts } from "@styled-icons/remix-line";
 
 const HeaderContainer = styled.div`
   position: absolute;
@@ -78,31 +78,31 @@ const UnstyledLink = styled(Link)`
 const sliderArray = [
   {
     name: "Home",
-    icon: <WolfPackBattalion />,
+    // icon: <WolfPackBattalion />,
   },
   {
     name: "Gallery",
-    icon: <Gallery />,
+    // icon: <Gallery />,
   },
   {
     name: "Contacts",
-    icon: <Contacts />,
+    // icon: <Contacts />,
   },
 ];
 
-const open = (func) => {
-  func("open");
-  setTimeout(() => {
-    func("opened");
-  }, 300);
-};
+// const open = (func) => {
+//   func("open");
+//   setTimeout(() => {
+//     func("opened");
+//   }, 300);
+// };
 
-const close = (func) => {
-  func("close");
-  setTimeout(() => {
-    func("closed");
-  }, 300);
-};
+// const close = (func) => {
+//   func("close");
+//   setTimeout(() => {
+//     func("closed");
+//   }, 300);
+// };
 
 
 
