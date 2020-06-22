@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-
+import {Close}from "@styled-icons/evil"
 import Img from "gatsby-image";
 
 const MainDiv = styled.div`
   display: flex;
   /* height: 100vh; */
-  padding: 15vh 6vw 0 6vw;
+  padding: 15vh 6vw 5vh 6vw;
   box-sizing: border-box;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -45,6 +45,31 @@ const DarkScreen = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: ${props => props.animation ? "close" : "open"} 0.2s linear;
+
+@keyframes open {
+  from {
+    opacity: 0;
+
+  }
+  to {
+    opacity: 1;
+    
+  }
+
+}
+
+@keyframes close {
+  from {
+    opacity: 1;
+
+  }
+  to {
+    opacity: 0;
+    
+  }
+
+}
 `;
 
 
@@ -54,11 +79,48 @@ const BigImage = styled(Img)`
 
   height: 80vh;
   width: ${(props) => 80*(props.ratio)}vh;
+
+/* FUN */
+  /* animation: ${(props) => props.ratio<1 ? "vertical" : "horizontal"} 0.1s linear;
+  @keyframes vertical {
+    from {
+      height: 0;
+    }
+    to {
+      height: 80vh;
+    }
+  }
+  @keyframes horizontal {
+    from {
+      width: 0;
+    }
+    to {
+      width: ${(props) => 80*(props.ratio)}vh;
+    }
+  } */
+
+
+
   @media only screen and (max-width: 768px){
     width: 80vw;
     height: ${(props) => 80/(props.ratio)}vw;
   }
+
+
 `;
+
+const CloseButton = styled(Close)`
+  color: yellowgreen;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+
+`;
+
+
 const Carousel = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -81,6 +143,7 @@ const Carousel = () => {
 
   const [index, setIndex] = useState(0);
   const [renderImage, setRenderImage] = useState(false);
+  const [animation, setAnimation] = useState(false);
   const prevImage = () => {
     index === 0 ? setIndex(imageArray.length - 1) : setIndex(index - 1);
   };
@@ -91,22 +154,20 @@ const Carousel = () => {
   return (
     <>
       {renderImage && (
-        <DarkScreen>
-          <button
-            onClick={() => {
-              setRenderImage(false);
-            }}
-          >
-            X
-          </button>
-          {/* <Canvas>
-            <BigImageWrapper> */}
+        <DarkScreen animation={animation}>
+<CloseButton onClick={() => {
+  setAnimation(true);
+  setTimeout(() => {
+    setRenderImage(false);
+    setAnimation(false)
+  }, 200);
+  }}/>
+
               <BigImage
                 fluid={imageArray[index].node.childImageSharp.fluid}
                 ratio={imageArray[index].node.childImageSharp.fluid.aspectRatio}
               />
-            {/* </BigImageWrapper>
-          </Canvas> */}
+
         </DarkScreen>
       )}
       <MainDiv>
