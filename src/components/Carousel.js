@@ -27,8 +27,8 @@ const ImageWrapper = styled.div`
   }
 
   @media only screen and (max-width: 768px){
-    width: 180px;
-  height: 180px;
+    width: 35vw;
+  height: 35vw;
   }
 
 `;
