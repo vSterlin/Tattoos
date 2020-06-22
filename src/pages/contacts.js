@@ -4,7 +4,7 @@ import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Layout from "../components/Layout";
 
-
+//
 const Background = styled(BackgroundImage)`
   position: relative;
 
