@@ -122,6 +122,30 @@ const Carousel = () => {
             </ImageWrapper>
           );
         })}
+                {imageArray.map(({ node }, i) => {
+          return (
+            <ImageWrapper key={i}
+              onClick={() => {
+                setRenderImage(true);
+                setIndex(i);
+              }}
+            >
+              <Image fluid={node.childImageSharp.fluid} />
+            </ImageWrapper>
+          );
+        })}
+                {imageArray.map(({ node }, i) => {
+          return (
+            <ImageWrapper key={i}
+              onClick={() => {
+                setRenderImage(true);
+                setIndex(i);
+              }}
+            >
+              <Image fluid={node.childImageSharp.fluid} />
+            </ImageWrapper>
+          );
+        })}
       </MainDiv>
     </>
   );
