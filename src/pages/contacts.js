@@ -59,9 +59,6 @@ const Contacts = () => {
       <Background fluid={image}>
         <BackgroundOverlay>
           <Heading>Contacts</Heading>
-
-
-
         </BackgroundOverlay>
       </Background>
     </Layout>
