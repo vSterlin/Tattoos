@@ -40,7 +40,7 @@ const Heading = styled.h1`
 
 
 
-const IndexPage = () => {
+const Contacts = () => {
   const data = useStaticQuery(graphql`
     query {
       desktop: file(relativePath: { eq: "background.jpg" }) {
@@ -68,4 +68,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default Contacts;
