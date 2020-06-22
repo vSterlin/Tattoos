@@ -26,6 +26,10 @@ const ImageWrapper = styled.div`
     box-shadow: 0 0 50px yellowgreen;
   }
 
+  @media only screen and (max-width: 768px){
+    width: 180px;
+  height: 180px;
+  }
 
 `;
 
