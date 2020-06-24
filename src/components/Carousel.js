@@ -9,7 +9,7 @@ import Img from "gatsby-image";
 const MainDiv = styled.div`
   display: flex;
   /* height: 100vh; */
-  padding: 15vh 6vw 5vh 6vw;
+  padding: 5vh 6vw 5vh 6vw;
   box-sizing: border-box;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -39,7 +39,7 @@ const DarkScreen = styled.div`
   width: 100vw;
   position: fixed;
   left: 0;
-
+  top: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
 
@@ -136,7 +136,7 @@ const Carousel = () => {
   const [index, setIndex] = useState(0);
   const [renderImage, setRenderImage] = useState(false);
   const [animation, setAnimation] = useState(false);
-  
+
   // const prevImage = () => {
   //   index === 0 ? setIndex(imageArray.length - 1) : setIndex(index - 1);
   // };

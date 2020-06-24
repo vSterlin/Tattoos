@@ -5,12 +5,12 @@ import { WolfPackBattalion } from "@styled-icons/fa-brands";
 // import { Gallery, Contacts } from "@styled-icons/remix-line";
 
 const HeaderContainer = styled.div`
-  position: absolute;
-  height: 8%;
+  /* position: absolute; */
+  height: 8vh;
   width: 100vw;
   left: 0;
   top: 0;
-
+  flex: 1;
   background-color: #1a1a1a;
   z-index: 10;
   display: flex;

@@ -11,7 +11,9 @@ const Background = styled(BackgroundImage)`
   background-color: #313131;
   /* flex: 4.5; */
   background-position: left;
+  /* height: 100vh; */
   height: 100vh;
+
 `;
 const BackgroundOverlay = styled.div`
   position: absolute;

@@ -27,7 +27,8 @@ const BackgroundOverlay = styled.div`
 
 const Flexbox = styled.div`
   display: flex;
-  height: 100%;
+  /* height: 100%; */
+  height: 92vh;
   @media only screen and (max-width: 768px){
     flex-direction: column;
   }

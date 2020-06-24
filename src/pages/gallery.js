@@ -9,7 +9,7 @@ const Background = styled.div`
   background-color: #313131;
   /* flex: 4.5; */
   background-position: left;
-  min-height: 100vh;
+  min-height: 92vh;
 `;
 
 
