@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { WolfPackBattalion } from "@styled-icons/fa-brands";
 // import { Gallery, Contacts } from "@styled-icons/remix-line";
+import {secondaryColor, brightColor} from "../colors/colors";
 
 const HeaderContainer = styled.div`
   /* position: absolute; */
@@ -11,7 +12,7 @@ const HeaderContainer = styled.div`
   left: 0;
   top: 0;
   flex: 1;
-  background-color: #1a1a1a;
+  background-color: ${secondaryColor};
   z-index: 10;
   display: flex;
   /* justify-content: flex-end; */
@@ -42,7 +43,7 @@ const HeaderItem = styled.div`
   transition: box-shadow 0.1s linear;
   &:hover {
     color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 8px 5px -5px yellowgreen;
+    box-shadow: 0 8px 5px -5px ${brightColor};
   }
 
   @media only screen and (max-width: 768px) {
@@ -54,7 +55,7 @@ const HeaderItem = styled.div`
 `;
 
 const Wolf = styled(WolfPackBattalion)`
-  color: yellowgreen;
+  color: ${brightColor};
   height: 6vh;
 
   
@@ -71,7 +72,7 @@ const UnstyledLink = styled(Link)`
   text-decoration: none;
   &.active {
     color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 8px 5px -5px yellowgreen;
+    box-shadow: 0 8px 5px -5px ${brightColor};
   }
 `;
 

@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import Carousel from "../components/Carousel";
+import {mainColor} from "../colors/colors";
 
 const Background = styled.div`
   position: relative;
 
-  background-color: #313131;
+  background-color: ${mainColor};
   /* flex: 4.5; */
   background-position: left;
   min-height: 92vh;

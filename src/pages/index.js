@@ -4,11 +4,12 @@ import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Layout from "../components/Layout";
 import { Waves } from "@styled-icons/material";
+import {mainColor, secondaryColor, brightColor} from "../colors/colors";
 
 const Background = styled(BackgroundImage)`
   position: relative;
 
-  background-color: #313131;
+  background-color: ${mainColor};
   /* flex: 4.5; */
   background-position: center;
   /* height: 100vh; */
@@ -39,7 +40,7 @@ const Flexbox = styled.div`
 const InfoDiv = styled.div`
   position: relative;
   flex: 6;
-  background-color: #262626;
+  background-color: ${mainColor};
   /* padding: 10%; */
   display: flex;
   align-items: center;
@@ -76,10 +77,10 @@ const SubHeading = styled.h2`
   text-decoration-color: greenyellow; */
 
 /* border-bottom: 1px solid #707070; */
-box-shadow: 0 5px 5px -5px yellowgreen;
+box-shadow: 0 5px 5px -5px ${brightColor};
 transition: box-shadow 0.1s linear;
 &:hover {
-  box-shadow: 0 10px 5px -5px yellowgreen;
+  box-shadow: 0 10px 5px -5px ${brightColor};
 
 }
 `;

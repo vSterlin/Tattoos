@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import { Close } from "@styled-icons/evil";
 import OutsideClickHandler from "react-outside-click-handler";
+import {brightColor} from "../colors/colors";
 
 import Img from "gatsby-image";
 
@@ -25,7 +26,7 @@ const ImageWrapper = styled.div`
   height: 200px;
   margin: 10px;
   &:hover {
-    box-shadow: 0 0 50px yellowgreen;
+    box-shadow: 0 0 50px ${brightColor};
   }
 
   @media only screen and (max-width: 768px) {
@@ -104,7 +105,7 @@ const BigImage = styled(Img)`
 `;
 
 const CloseButton = styled(Close)`
-  color: yellowgreen;
+  color: ${brightColor};
   height: 40px;
   position: absolute;
   right: 0;
