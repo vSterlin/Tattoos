@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import { Close } from "@styled-icons/evil";
 import OutsideClickHandler from "react-outside-click-handler";
-import {brightColor} from "../colors/colors";
+import { brightColor } from "../colors/colors";
 
 import Img from "gatsby-image";
 
@@ -21,6 +21,8 @@ const Image = styled(Img)`
   height: 100%;
 `;
 
+const galleryAnimationTime = 0.5;
+
 const ImageWrapper = styled.div`
   width: 200px;
   height: 200px;
@@ -29,9 +31,71 @@ const ImageWrapper = styled.div`
     box-shadow: 0 0 50px ${brightColor};
   }
 
+  @keyframes slideUp {
+    from {
+      transform: translateY(1000px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes slideFromLeft {
+    from {
+      transform: translateX(-1000px);
+    }
+    to {
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes slideFromRight {
+    from {
+      transform: translateX(1000px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+  &:nth-child(5n + 1) div {
+    /* transform: translateX(-1000px); */
+
+    animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
+    animation-delay: 0.2s;
+  }
+  &:nth-child(5n + 2) div {
+    /* transform: translateX(-1000px); */
+
+    animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
+  }
+  &:nth-child(5n + 3) {
+    /* transform: translateY(1000px); */
+    animation: slideUp ${galleryAnimationTime}s ease-in forwards;
+  }
+  &:nth-child(5n + 4) div {
+    /* transform: translateX(1000px); */
+
+    animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
+  }
+  &:nth-child(5n + 5) div {
+    /* transform: translateX(1000px); */
+
+    animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
+    animation-delay: 0.2s;
+  }
+
   @media only screen and (max-width: 768px) {
     width: 35vw;
     height: 35vw;
+
+    &:nth-child(odd) {
+      animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
+    }
+
+    &:nth-child(even) {
+      animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
+    }
   }
 `;
 
@@ -155,9 +219,7 @@ const Carousel = () => {
   return (
     <>
       {renderImage && (
-        <DarkScreen
-          animation={animation}
-        >
+        <DarkScreen animation={animation}>
           <CloseButton />
           <OutsideClickHandler
             onOutsideClick={() => {
@@ -176,6 +238,7 @@ const Carousel = () => {
           return (
             <ImageWrapper
               key={i}
+              position={i}
               onClick={() => {
                 setRenderImage(true);
                 setIndex(i);
