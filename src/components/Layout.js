@@ -13,6 +13,7 @@ const Global = createGlobalStyle`
 
 const MainDiv = styled.div`
   height: 100vh;
+  min-width: 100vw;
 `;
 const Layout = ({ children }) => {
   return (

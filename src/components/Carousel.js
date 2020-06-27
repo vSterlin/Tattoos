@@ -14,6 +14,7 @@ const MainDiv = styled.div`
   box-sizing: border-box;
   flex-wrap: wrap;
   justify-content: space-between;
+  column-count: 1;
 `;
 
 const Image = styled(Img)`
@@ -58,13 +59,13 @@ const ImageWrapper = styled.div`
     }
   }
 
-  &:nth-child(5n + 1) div {
+  &:nth-child(5n + 1)  {
     /* transform: translateX(-1000px); */
 
     animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
     animation-delay: 0.2s;
   }
-  &:nth-child(5n + 2) div {
+  &:nth-child(5n + 2)  {
     /* transform: translateX(-1000px); */
 
     animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
@@ -73,12 +74,12 @@ const ImageWrapper = styled.div`
     /* transform: translateY(1000px); */
     animation: slideUp ${galleryAnimationTime}s ease-in forwards;
   }
-  &:nth-child(5n + 4) div {
+  &:nth-child(5n + 4)  {
     /* transform: translateX(1000px); */
 
     animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
   }
-  &:nth-child(5n + 5) div {
+  &:nth-child(5n + 5) {
     /* transform: translateX(1000px); */
 
     animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
@@ -96,6 +97,18 @@ const ImageWrapper = styled.div`
     &:nth-child(even) {
       animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
     }
+  }
+  @media only screen and (min-width: 1500px) {
+    width: 300px;
+    height: 300px;
+
+    /* &:nth-child(odd) {
+      animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
+    }
+
+    &:nth-child(even) {
+      animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
+    } */
   }
 `;
 
