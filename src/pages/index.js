@@ -120,7 +120,7 @@ const IndexPage = () => {
           <Wave />
           <Rectangle>
 
-          <Heading>Sterlin's<br /> Tattoo<br />Shop</Heading>
+          <Heading>VS<br /> Tattoo<br />Shop</Heading>
           <SubHeading>Learn More</SubHeading>
           </Rectangle>
         </InfoDiv>

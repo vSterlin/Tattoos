@@ -190,13 +190,13 @@ const Carousel = () => {
               close();
             }}
           >
-                        <button onClick={() => {setIndex(index-1)}}>{"<"}</button>
+                        {/* <button onClick={() => {setIndex(index-1)}}>{"<"}</button> */}
 
             <BigImage
               fluid={imageArray[index].node.childImageSharp.fluid}
               ratio={imageArray[index].node.childImageSharp.fluid.aspectRatio}
             />
-            <button onClick={() => {setIndex(index+1)}}>></button>
+            {/* <button onClick={() => {setIndex(index+1)}}>></button> */}
           </OutsideClickHandler>
         </DarkScreen>
       )}
