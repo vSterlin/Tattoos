@@ -15,14 +15,18 @@ const MainDiv = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   column-count: 1;
+
 `;
 
 const Image = styled(Img)`
   width: 100%;
   height: 100%;
+  &:hover {
+    transform: scale(1.01, 1.01);
+  }
 `;
 
-const galleryAnimationTime = 0.5;
+const galleryAnimationTime = 0.15;
 
 const ImageWrapper = styled.div`
   width: 200px;
@@ -32,83 +36,23 @@ const ImageWrapper = styled.div`
     box-shadow: 0 0 50px ${brightColor};
   }
 
-  @keyframes slideUp {
+  @keyframes appear {
     from {
-      transform: translateY(1000px);
+      transform: scale(0, 0);
     }
     to {
-      transform: translateY(0px);
+      transform: scale(1, 1);
     }
   }
 
-  @keyframes slideFromLeft {
-    from {
-      transform: translateX(-1000px);
-    }
-    to {
-      transform: translateX(0px);
-    }
-  }
 
-  @keyframes slideFromRight {
-    from {
-      transform: translateX(1000px);
-    }
-    to {
-      transform: translateY(0px);
-    }
-  }
+  /* animation: appear ${galleryAnimationTime}s linear forwards;
+  animation-delay: ${({position}) => `${position*(galleryAnimationTime-0.1)}`}s; */
 
-  &:nth-child(5n + 1)  {
-    /* transform: translateX(-1000px); */
-
-    animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
-    animation-delay: 0.2s;
-  }
-  &:nth-child(5n + 2)  {
-    /* transform: translateX(-1000px); */
-
-    animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
-  }
-  &:nth-child(5n + 3) {
-    /* transform: translateY(1000px); */
-    animation: slideUp ${galleryAnimationTime}s ease-in forwards;
-  }
-  &:nth-child(5n + 4)  {
-    /* transform: translateX(1000px); */
-
-    animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
-  }
-  &:nth-child(5n + 5) {
-    /* transform: translateX(1000px); */
-
-    animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
-    animation-delay: 0.2s;
-  }
 
   @media only screen and (max-width: 768px) {
     width: 35vw;
     height: 35vw;
-
-    &:nth-child(odd) {
-      animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
-    }
-
-    &:nth-child(even) {
-      animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
-    }
-  }
-  @media only screen and (min-width: 1500px) {
-    width: 300px;
-    height: 300px;
-
-    /* &:nth-child(odd) {
-      animation: slideFromLeft ${galleryAnimationTime}s ease-in forwards;
-    }
-
-    &:nth-child(even) {
-      animation: slideFromRight ${galleryAnimationTime}s ease-in forwards;
-    } */
   }
 `;
 
@@ -124,7 +68,7 @@ const DarkScreen = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: ${(props) => (props.animation ? "close" : "open")} 0.2s linear;
+  animation: ${(props) => (props.animation ? "close" : "open")} 0.2s linear forwards;
 
   @keyframes open {
     from {
@@ -170,8 +114,15 @@ const BigImage = styled(Img)`
       width: ${(props) => 80 * props.ratio}vh;
     }
   } */
-
-
+@keyframes imageAppear {
+  from {
+    transform: scale(0, 0);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+/* animation: imageAppear 0.2s linear; */
 
   @media only screen and (max-width: 768px){
     width: 80vw;
@@ -239,10 +190,13 @@ const Carousel = () => {
               close();
             }}
           >
+                        <button onClick={() => {setIndex(index-1)}}>{"<"}</button>
+
             <BigImage
               fluid={imageArray[index].node.childImageSharp.fluid}
               ratio={imageArray[index].node.childImageSharp.fluid.aspectRatio}
             />
+            <button onClick={() => {setIndex(index+1)}}>></button>
           </OutsideClickHandler>
         </DarkScreen>
       )}
@@ -265,6 +219,7 @@ const Carousel = () => {
           return (
             <ImageWrapper
               key={i}
+              position={i+7}
               onClick={() => {
                 setRenderImage(true);
                 setIndex(i);
@@ -278,6 +233,7 @@ const Carousel = () => {
           return (
             <ImageWrapper
               key={i}
+              position={i+14}
               onClick={() => {
                 setRenderImage(true);
                 setIndex(i);

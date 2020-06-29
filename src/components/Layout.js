@@ -14,6 +14,8 @@ const Global = createGlobalStyle`
 const MainDiv = styled.div`
   height: 100vh;
   min-width: 100vw;
+  overflow-x: hidden;
+
 `;
 const Layout = ({ children }) => {
   return (

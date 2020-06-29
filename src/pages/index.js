@@ -13,7 +13,7 @@ const Background = styled(BackgroundImage)`
   /* flex: 4.5; */
   background-position: center;
   /* height: 100vh; */
-  flex: 4;
+  flex: 3.5;
   @media only screen and (max-width: 768px){
     display: none;
   }
@@ -39,7 +39,7 @@ const Flexbox = styled.div`
 
 const InfoDiv = styled.div`
   position: relative;
-  flex: 6;
+  flex: 6.5;
   background-color: ${mainColor};
   /* padding: 10%; */
   display: flex;
@@ -90,9 +90,12 @@ const Wave = styled(Waves)`
   position: absolute;
   transform: rotate(-45deg);
 
-  color: rgba(0,0,0, 0.8);
+  color: rgba(0,0,0, 0.5);
   z-index: 1;
-  
+  @media screen and (min-width: 1500px){
+    width: 2000px;
+
+  }
 `;
 
 
